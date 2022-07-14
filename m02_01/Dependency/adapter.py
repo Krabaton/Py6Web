@@ -41,7 +41,7 @@ def parse_course(adapter, data):
 
 
 if __name__ == '__main__':
-    api_client = ApiClient(requests)
+    api_client = ApiClient(RequestConnection(requests))
     data_xml = api_client.get_xml('https://api.privatbank.ua/p24api/pubinfo?exchange&coursid=11')
     print(parse_course(xml_adapter, data_xml))
 
