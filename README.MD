@@ -163,6 +163,17 @@ pipenv run pyinstaller -F --icon=alisa.ico --noconsole main.py
 ```shell
 docker run -d mongo
 ```
+Если хотим запустить контейнер и сразу зайти в него, то выполняем команду
+
+```shell
+docker run -it mongo
+```
+
+Если контейнер уже работает с флагом `-d` то зайти в него можно командой, главное указать его `id hash`
+
+```shell
+docker exec -it <hash>
+```
 
 Посмотреть на запущенные контейнеры можно командой. Если добавить флаг `-a` увидим еще и не запущенные контейнеры
 
@@ -204,7 +215,7 @@ docker run -p 27017:27017 -d mongo
 docker run -p 27017:27017 -v e/dbstorage:/data/db -d mongo
 ```
 
-Создать образ из **Dockerfile**. Точка это пусть где файл **Dockerfile**
+Создать образ из **Dockerfile**. Точка это путь, где находится файл **Dockerfile**
 
 ```shell
 docker build . -t nickname/name-image
