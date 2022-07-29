@@ -245,3 +245,17 @@ docker-compose up -d
 - Создание потоков в Python. `Thread`, `Timer` (01-04)
 - Контроль доступа к ресурсам. `Rlock` (05)
 - Синхронизация потоков. `Event`, `Condition`, `Semaphore`, `Barrier` (06-11)
+
+### Занятие m04_02 (29.07.2022) 
+
+**Приложение** `Task runner`
+
+С помощью потоков собираем (конкатенируем) файлы `js` в один файл `main.js`
+
+**Приложение** `exchangeRate`
+Рассмотрели последовательный подход правильного **HTTP** запроса.
+
+2. Вариант реализации через `Queue` - `main_thread_final.py`
+3. Вариант реализации через `ThreadPoolExecutor` - `app.py`
+
+Статья [Использование ThreadPoolExecutor в Python 3](https://www.digitalocean.com/community/tutorials/how-to-use-threadpoolexecutor-in-python-3-ru)
