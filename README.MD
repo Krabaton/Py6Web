@@ -1,13 +1,14 @@
 # Шестой поток Python
 
 
-
 # Оглавление
 1. [Модуль №1. Управление созданием экземпляров класса](#module01)
 2. [Модуль №2. Приемы объектно-ориентированного программирования](#module02)
 3. [Модуль №3. Python Deployment](#module03)
 4. [Модуль №4. Многопоточность в Python](#module04)
-5. 
+5. [Модуль №5. Процессы в Python](#module05)
+6. [Модуль №5. Асинхронное программирование](#module06)
+
 ## Модуль №1. Управление созданием экземпляров класса <a name="module01"></a>
 
 ### Занятие m01_01 (06.07.2022)
@@ -259,3 +260,9 @@ docker-compose up -d
 3. Вариант реализации через `ThreadPoolExecutor` - `app.py`
 
 Статья [Использование ThreadPoolExecutor в Python 3](https://www.digitalocean.com/community/tutorials/how-to-use-threadpoolexecutor-in-python-3-ru)
+
+## Модуль №5. Процессы в Python <a name="module05"></a>
+
+### Занятие m05_01 (04.08.2022)
+
+### Занятие m05_02 (05.08.2022) 
