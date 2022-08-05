@@ -266,3 +266,8 @@ docker-compose up -d
 ### Занятие m05_01 (04.08.2022)
 
 ### Занятие m05_02 (05.08.2022) 
+
+Очень хорошая статья про использование `Pipe` с процессами [Multiprocessing Pipe in Python](https://superfastpython.com/multiprocessing-pipe-in-python/)
+
+Статья про использование логирования внутри процессов [Multiprocessing Logging in Python](https://superfastpython.com/multiprocessing-logging-in-python/)
+
