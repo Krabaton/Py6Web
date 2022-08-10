@@ -7,7 +7,7 @@
 3. [Модуль №3. Python Deployment](#module03)
 4. [Модуль №4. Многопоточность в Python](#module04)
 5. [Модуль №5. Процессы в Python](#module05)
-6. [Модуль №5. Асинхронное программирование](#module06)
+6. [Модуль №6. Асинхронное программирование](#module06)
 
 ## Модуль №1. Управление созданием экземпляров класса <a name="module01"></a>
 
@@ -271,3 +271,11 @@ docker-compose up -d
 
 Статья про использование логирования внутри процессов [Multiprocessing Logging in Python](https://superfastpython.com/multiprocessing-logging-in-python/)
 
+## Модуль №6. Асинхронное программирование <a name="module06"></a>
+
+### Занятие m06_01 (10.08.2022)
+
+
+### Занятие m06_02 (12.08.2022) 
+
+[RuntimeError: Event Loop is Closed asyncio Fix](https://pythonalgos.com/runtimeerror-event-loop-is-closed-asyncio-fix/)

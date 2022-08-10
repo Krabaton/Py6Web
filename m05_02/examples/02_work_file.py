@@ -34,6 +34,7 @@ if __name__ == '__main__':
     timer = time()
     [process.start() for process in processes]
     [process.join() for process in processes]
+    [process.close() for process in processes]
     print(f'Done by 3 processes: {round(time() - timer, 4)}')
 
     timer = time()
