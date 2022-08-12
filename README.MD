@@ -279,3 +279,7 @@ docker-compose up -d
 ### Занятие m06_02 (12.08.2022) 
 
 [RuntimeError: Event Loop is Closed asyncio Fix](https://pythonalgos.com/runtimeerror-event-loop-is-closed-asyncio-fix/)
+
+[Асинхронный python без головной боли (часть 1)](https://habr.com/ru/post/667630/)
+
+[Группы асинхронных задач в Python 3.11](https://habr.com/ru/company/otus/blog/681560/)
