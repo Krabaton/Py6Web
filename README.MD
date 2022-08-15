@@ -1567,12 +1567,8 @@ do {
 
 Создание функции в JavaScript:
 
-```javascript
-function name(a
-
-[, b]
-)
-{
+```
+function name(a[, b]) {
     code
 }
 name(параметры); // вызов
