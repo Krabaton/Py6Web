@@ -56,4 +56,3 @@ def run(server_class=HTTPServer, handler_class=HttpGetHandler):
 
 if __name__ == '__main__':
     run()
-    
