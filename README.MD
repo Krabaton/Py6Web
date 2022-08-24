@@ -9,6 +9,7 @@
 5. [Модуль №5. Процессы в Python](#module05)
 6. [Модуль №6. Асинхронное программирование](#module06)
 7. [Модуль №7. Основы Web](#module07)
+8. [Модуль №8. Реляционные базы данных](#module08)
 
 ## Модуль №1. Управление созданием экземпляров класса <a name="module01"></a>
 
@@ -2284,3 +2285,129 @@ window.addEventListener('load', function() {
     console.log("страница полностью готова");
 });
 ```
+
+## Модуль №8. Реляционные базы данных <a name="module08"></a>
+
+### Занятие m08_01 (24.08.2022)
+
+Про нормальные формы [ссылка](https://replit.com/@Krabaton/SQLexample)
+
+Практический пример на [replit](https://replit.com/@Krabaton/SQLexample)
+
+Скрипты создания на вебинаре
+
+```sqlite
+CREATE TABLE genders (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    name VARCHAR(30),
+    createAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    name VARCHAR(30),
+    email VARCHAR(30),
+    password VARCHAR(30),
+    age TINYINT UNSIGNED,
+    gender_id INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (gender_id) REFERENCES genders (id)
+          ON DELETE SET NULL
+          ON UPDATE CASCADE
+);
+
+CREATE TABLE contacts (
+    id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+    name VARCHAR(30),
+    email VARCHAR(30),
+    phone VARCHAR(30),
+    favorite BOOLEAN,
+    user_id INTEGER,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (id)
+          ON DELETE CASCADE
+          ON UPDATE CASCADE
+);
+
+
+INSERT INTO users (id, name, email, password, age, gender_id)
+VALUES (1, 'Boris', 'boris@test.com', 'password', 23, 1),
+(2, 'Alina', 'alina@test.com', 'password', 32, 2),
+(3, 'Maksim', 'maksim@test.com', 'password', 40, 1);
+
+
+INSERT INTO contacts (name, email, phone, favorite, user_id)
+VALUES ('Allen Raymond', 'nulla.ante@vestibul.co.uk', '(992) 914-3792', 0, 1),
+('Chaim Lewis', 'dui.in@egetlacus.ca', '(294) 840-6685', 1, 1),
+('Kennedy Lane', 'mattis.Cras@nonenimMauris.net', '(542) 451-7038', 1, 2),
+('Wylie Pope', 'est@utquamvel.net', '(692) 802-2949', 0, 2),
+('Cyrus Jackson', 'nibh@semsempererat.com', '(501) 472-5218', 0, null);
+```
+
+Скрипты манипуляции с данными:
+
+```sqlite
+SELECT id, name as fullname 
+FROM contacts
+WHERE favorite <> TRUE 
+ORDER BY fullname ASC
+LIMIT 100;
+
+SELECT name, email
+FROM users
+WHERE age IN(20, 30, 40)
+ORDER BY name;
+
+SELECT name, email
+FROM users
+WHERE age BETWEEN 20 AND 32
+ORDER BY name;
+
+
+SELECT name, email
+FROM contacts
+WHERE name LIKE '% L%'
+ORDER BY name;
+
+SELECT name, email, age
+FROM users
+WHERE age NOT BETWEEN 30 AND 40
+ORDER BY name;
+
+SELECT COUNT(user_id) as total_contacts, user_id
+FROM contacts
+GROUP BY user_id;
+
+
+SELECT id, name
+FROM users
+WHERE age < 35;
+
+SELECT *
+FROM contacts
+WHERE user_id IN (SELECT id
+    FROM users
+    WHERE age < 35);
+    
+   
+SELECT c.id, c.name, c.email, u.name owner
+FROM contacts c
+INNER JOIN users u ON u.id = c.user_id;
+
+SELECT c.id, c.name, c.email, u.name owner
+FROM contacts c
+LEFT JOIN users u ON u.id = c.user_id;
+
+UPDATE contacts SET user_id = 3 WHERE id = 5;
+
+SELECT c.id, c.name, c.email, u.name owner
+FROM users u
+LEFT JOIN contacts c ON u.id = c.user_id;
+
+
+CREATE TABLE IF NOT EXISTS companies (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    company_name VARCHAR(255) UNIQUE NOT NULL
+);
+```
+### Занятие m08_02 (25.08.2022)
