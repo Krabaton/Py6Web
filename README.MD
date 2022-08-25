@@ -2290,7 +2290,7 @@ window.addEventListener('load', function() {
 
 ### Занятие m08_01 (24.08.2022)
 
-Про нормальные формы [ссылка](https://replit.com/@Krabaton/SQLexample)
+Про нормальные формы [ссылка](https://docs.google.com/spreadsheets/d/13AkXWuSHhG9uLiyzdmSft4ljl2YNuLEW7xR2HO0BAS4/edit?usp=sharing)
 
 Практический пример на [replit](https://replit.com/@Krabaton/SQLexample)
 
