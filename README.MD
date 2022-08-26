@@ -2294,6 +2294,8 @@ window.addEventListener('load', function() {
 
 Практический пример на [replit](https://replit.com/@Krabaton/SQLexample)
 
+<iframe frameborder="0" width="100%" height="500px" src="https://replit.com/@Krabaton/SQLexample?embed=true"></iframe>
+
 Скрипты создания на вебинаре
 
 ```sqlite
