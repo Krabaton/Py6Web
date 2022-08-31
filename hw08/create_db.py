@@ -152,5 +152,5 @@ def fill_data():
 
 
 if __name__ == '__main__':
-    create_db(name_database)
+    create_db('init_db.sql')
     fill_data()
