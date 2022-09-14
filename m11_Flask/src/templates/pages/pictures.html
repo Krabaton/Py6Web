@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row mb-3">
+    <h1>Your pictures</h1>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card mb-4 shadow-sm">
+        <img
+          class="bd-placeholder-img card-img-top"
+          src="/static/html.jpg"
+          width="100%"
+          height="225"
+          alt="150"
+          srcset=""
+          style="object-fit: contain"
+        />
+        <div class="card-body">
+          <p class="card-text">Html baby</p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+              <a class="btn btn-sm btn-outline-secondary" href="/edit"
+                >Редактировать</a
+              >
+              <form action="#" method="post">
+                <button class="btn btn-sm btn-outline-secondary">
+                  Удалить
+                </button>
+              </form>
+            </div>
+            <small class="text-muted">10000</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

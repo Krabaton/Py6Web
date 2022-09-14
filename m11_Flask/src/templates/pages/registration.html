@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+      <div class="container">
+        <div class="row justify-content-center mb-3">
+          <h1>Registration</h1>
+        </div>
+        <div class="row justify-content-center">
+          <form class="col-sm-6" action="/registration" method="post">
+            <div class="form-group">
+              <input
+                class="form-control col-sm-12"
+                type="text"
+                placeholder="email"
+                name="email"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                class="col-sm-12 form-control"
+                type="password"
+                placeholder="password"
+                name="password"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                class="col-sm-12 form-control"
+                type="text"
+                placeholder="nickname"
+                name="nick"
+              />
+            </div>
+            <div class="form-group">
+              <button class="btn btn-primary col-sm-12" type="submit">
+                Registration
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+{% endblock %}
