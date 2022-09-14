@@ -1,0 +1,26 @@
+body,
+html {
+  padding: 5rem 50px 50px;
+  font: 16px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  align-content: center;
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1 {
+  color: #0DCA1B;
+}
+
+.template {
+  /* padding: 3rem 1.5rem; */
+  text-align: center;
+  height: 100%;
+  width: 100%;
+}
