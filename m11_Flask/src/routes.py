@@ -3,11 +3,14 @@ from werkzeug.utils import secure_filename
 import pathlib
 import uuid
 from datetime import datetime, timedelta
+from marshmallow import ValidationError
 
 from . import app
 from src.libs.validation_file import allowed_file
 from src.repository import users, pics
 # from src import repository -> repository.users
+from src.libs.validation_schemas import RegistrationSchema, LoginSchema
+
 
 @app.before_request
 def before_func():
@@ -18,6 +21,7 @@ def before_func():
             user = users.get_user_by_token(token_user)
             if user:
                 session['username'] = {"username": user.username, "id": user.id}
+
 
 @app.route('/healthcheck')
 def healthcheck():
@@ -36,6 +40,7 @@ def pictures():
     if not auth:
         return redirect(request.url)
     pictures_user = pics.get_pictures_user(session['username']['id'])
+    print(pictures_user)
     return render_template('pages/pictures.html', auth=auth, pictures=pictures_user)
 
 
@@ -43,6 +48,10 @@ def pictures():
 def registration():
     auth = True if 'username' in session else False
     if request.method == 'POST':
+        try:
+            RegistrationSchema().load(request.form)
+        except ValidationError as err:
+            return render_template('pages/registration.html', messages=err.messages)
         email = request.form.get('email')
         password = request.form.get('password')
         nick = request.form.get('nick')
@@ -59,6 +68,11 @@ def registration():
 def login():
     auth = True if 'username' in session else False
     if request.method == 'POST':
+        try:
+            LoginSchema().load(request.form)
+        except ValidationError as err:
+            return render_template('pages/login.html', messages=err.messages)
+
         email = request.form.get('email')
         password = request.form.get('password')
         remember = True if request.form.get('remember') == 'on' else False
@@ -101,7 +115,6 @@ def pictures_upload():
         return redirect(request.url)
     if request.method == 'POST':
         description = request.form.get('description')
-        print(description)
         if 'photo' not in request.files:
             flash('No file part')
             return redirect(request.url)
@@ -111,22 +124,35 @@ def pictures_upload():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(pathlib.Path(app.config['UPLOAD_FOLDER']) / filename)
+            file_path = pathlib.Path(app.config['UPLOAD_FOLDER']) / filename
+            file.save(file_path)
+            pics.upload_file_for_user(session['username']['id'], file_path, description)
+            flash('Uploaded successfully!')
             return redirect(url_for('pictures_upload'))
     return render_template('pages/upload.html', auth=auth)
 
 
-@app.route('/pictures/edit/<id>', methods=['GET', 'POST'], strict_slashes=False)
-def edit():
+@app.route('/pictures/edit/<pic_id>', methods=['GET', 'POST'], strict_slashes=False)
+def picture_edit(pic_id):
     auth = True if 'username' in session else False
     if not auth:
         return redirect(request.url)
-    return render_template('pages/edit.html', auth=auth)
+
+    picture = pics.get_picture_user(pic_id, session['username']['id'])
+    if request.method == 'POST':
+        description = request.form.get('description')
+        pics.update_picture(pic_id, session['username']['id'], description)
+        flash('Operation successfully!')
+        return redirect(url_for('pictures'))
+    return render_template('pages/edit.html', auth=auth, picture=picture)
 
 
-@app.route('/pictures/delete/<id>', methods=['POST'], strict_slashes=False)
-def delete():
+@app.route('/pictures/delete/<pic_id>', methods=['POST'], strict_slashes=False)
+def delete(pic_id):
     auth = True if 'username' in session else False
     if not auth:
         return redirect(request.url)
-    return render_template('pages/edit.html', auth=auth)
+    if request.method == 'POST':
+        pics.delete_picture(pic_id, session['username']['id'])
+        flash('Operation successfully!')
+    return redirect(url_for('pictures'))

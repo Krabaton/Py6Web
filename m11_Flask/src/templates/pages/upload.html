@@ -5,7 +5,13 @@
         <div class="row justify-content-center mb-3">
           <h1>Upload your picture</h1>
         </div>
-
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-warning">{{message}}</div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
         <div class="row justify-content-center">
           <form
             class="col-sm-6"

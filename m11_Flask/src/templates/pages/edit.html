@@ -7,7 +7,7 @@
         </div>
         <div class="row justify-content-center mb-3">
           <img
-            src="/static/html.jpg"
+            src="{{picture.path}}"
             width="225"
             height="225"
             alt="150"
@@ -15,14 +15,14 @@
           />
         </div>
         <div class="row justify-content-center">
-          <form class="col-sm-6" action="#" method="post">
+          <form class="col-sm-6" action="/pictures/edit/{{picture.id}}" method="post">
             <div class="form-group">
               <input
                 class="form-control col-sm-12"
                 type="text"
                 placeholder="Description"
                 name="description"
-                value="Html baby"
+                value="{{picture.description}}"
               />
             </div>
             <div class="form-group">
