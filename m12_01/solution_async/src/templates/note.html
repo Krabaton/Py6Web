@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Add note</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        <ul>
+          <li><a href="/" role="button"> Go back to the main page </a></li>
+        </ul>
+      </nav>
+      <form method="POST" action="/note">
+        <div style="padding: 10px">
+          <label
+            >Note name:
+            <input type="text" name="name" required />
+          </label>
+        </div>
+        <div style="padding: 10px">
+          <label
+            >Note description:
+            <input type="text" name="description" required />
+          </label>
+        </div>
+        <div style="padding: 10px">
+          <label
+            >Select tags:
+            <select name="tags" multiple="multiple" required>
+              {% for tag in tags %}
+              <option value="{{tag.name}}">{{tag.name}}</option>
+              {% endfor %}
+            </select>
+          </label>
+        </div>
+        <div class="grid">
+          <button type="reset" class="secondary">Reset</button>
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </main>
+  </body>
+</html>

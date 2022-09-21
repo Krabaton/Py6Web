@@ -3,7 +3,9 @@
 def example():
     foo = 16
     loc = locals()
+    print(f'Before: {loc}')
     baz = eval('foo + 10')
+    print(f'After: {loc}')
     print(baz)
 
 
@@ -23,8 +25,9 @@ def example3():
     foo = 16
     baz = 10
     loc = {'foo': 13, 'baz': baz}
+    print(f'Before: {loc}')
     foo = eval('foo + 1', {}, loc)
-    print(loc)
+    print(f'After: {loc}')
     print(f'foo={foo}')
 
 

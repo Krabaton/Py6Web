@@ -11,7 +11,7 @@ class OurMeta(type):
     def __prepare__(mcs, name, bases, **kwargs):
         print(mcs, "__prepare__ metaclass called")
         print(kwargs)
-        return super().__prepare__(name, bases)
+        return super().__prepare__(name, bases, **kwargs)
 
     def __call__(cls, *args, **kwargs):
         print(cls, "__call__ metaclass called")

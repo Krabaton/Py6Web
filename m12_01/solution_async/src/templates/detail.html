@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Note information</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        <ul>
+          <li><a href="/" role="button"> Go back to the main page </a></li>
+        </ul>
+      </nav>
+      <h1>{{note.name}}</h1>
+      <p>Description: <b>{{note.description}}</b></p>
+      <p>Time of creation: <kbd>{{note.created.date()}}</kbd></p>
+      {% if note.done %}
+      <p>Status: <ins>Completed</ins></p>
+      {% else %}
+      <p>Status: <i>Not implemented</i></p>
+      {% endif %}
+
+      <p>Tags: <small>
+        {{ note.tags|join(', ', attribute='name') }}
+      </small></p>
+
+    </main>
+  </body>
+</html>

@@ -3,7 +3,9 @@
 def example():
     foo = 16
     loc = locals()
+    print(f'Before: {loc}')
     exec('baz = foo + 10')
+    print(f'After: {loc}')
     baz = loc['baz']
     print(baz)
 

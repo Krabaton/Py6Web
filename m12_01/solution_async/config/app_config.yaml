@@ -1,0 +1,8 @@
+postgres:
+  database: web6121
+  user: postgres
+  password: 567234
+  host: localhost
+  port: 5432
+  minsize: 1
+  maxsize: 5
