@@ -1,0 +1,21 @@
+{% extends "base_chat.html" %}
+{% block content %}
+<div class="wrapper">
+    <div class="header">
+        Наш простой чат на Socket.io
+    </div>
+    <div class="content">
+        <main class="main">
+            <form action="" class="msg">
+                <input type="text" id="msg" class="msg__input">
+                <button type="submit" class="msg__btn">Отправить</button>
+            </form>
+            <div class="chat">
+                {% for message in messages%}
+                <div class="users__item">{{message.login}}: {{message.message}}</div>
+                {% endfor %}
+            </div>
+        </main>
+    </div>
+</div>
+{% endblock %}
