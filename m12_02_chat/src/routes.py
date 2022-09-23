@@ -1,11 +1,14 @@
 from aiohttp.web import Application
 from src.auth.views import Main, Login, SignIn, SignOut
+from src.chat.views import ChatList, WebSocket
 
 routes = [
     ('GET', '/', Main, 'main'),
     ('*', '/login', Login, 'login'),
     ('*', '/signin', SignIn, 'signin'),
-    ('*', '/signout', SignOut, 'signout')
+    ('*', '/signout', SignOut, 'signout'),
+    ('GET', '/chat', ChatList, 'chat'),
+    ('GET', '/ws', WebSocket, 'socket')
 ]
 
 

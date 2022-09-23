@@ -10,6 +10,9 @@ aiohttp = "^3.8.3"
 aiohttp-jinja2 = "^1.5"
 PyYAML = "^6.0"
 gino = "^1.0.1"
+alembic = "^1.8.1"
+psycopg2 = "^2.9.3"
+aiohttp-session = {extras = ["secure"], version = "^2.11.0"}
 
 [tool.poetry.dev-dependencies]
 
