@@ -12,7 +12,7 @@ class Profiled:
         return self.__wrapped__(*args, **kwargs)
 
     def __get__(self, instance, cls):
-        print(self, instance, cls)
+        # print(self, instance, cls)
         if instance is None:
             return self
         else:
@@ -30,7 +30,8 @@ class Calculate:
 
     @Profiled
     def add(self, y):
-        return self.x + y
+        self.x = self.x + y
+        return self.x
 
 
 if __name__ == '__main__':
@@ -41,10 +42,10 @@ if __name__ == '__main__':
     count = Calculate(10)
     count.add(3)
     count.add(4)
-    count.add(1)
+    # count.add(1)
     count.add.__wrapped__(count, 4)
     print(f'add count called: {Calculate.add.counter}')
-
+    print(count.x)
     def sub(self, y):
         self.x = self.x - y
 

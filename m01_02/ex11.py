@@ -24,10 +24,13 @@ class Person:
         self.name = name
         self.age = age
 
+    def __str__(self):
+        return f"Person({self.name}, {self.age})"
 
 
 if __name__ == '__main__':
     person = Person('Krabat', 46)
+    print(person)
     person.name = 'Yurii'
     try:
         person.age = 'Old fart'

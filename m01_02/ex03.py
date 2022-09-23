@@ -1,6 +1,6 @@
 import logging
 
-logging.basicConfig(level=logging.WARNING, format='%(asctime)s %(funcName)-15s %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s %(funcName)-15s %(message)s')
 logging.info('Start')
 
 

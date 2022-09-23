@@ -7,6 +7,7 @@ def logged(level, name=None, message=None):
         log_name = name if name else func.__module__
         log_message = message if message else func.__name__
         logger = logging.getLogger(log_name)
+        logging.basicConfig(level=logging.DEBUG)
 
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -29,6 +30,6 @@ def prefix_name(name):
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG)
+
     print(add(2, 3))
     print(prefix_name('Andrij'))

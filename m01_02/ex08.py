@@ -5,6 +5,7 @@ import logging
 
 def optional_logger(func):
     logger = logging.getLogger(func.__name__)
+    logging.basicConfig(level=logging.DEBUG)
 
     @wraps(func)
     def wrapper(*args, debug=False, **kwargs):
@@ -21,6 +22,6 @@ def prefix_name(name):
 
 
 if __name__ == '__main__':
-    logging.basicConfig(level=logging.DEBUG)
+
     print(prefix_name('Andrij'))
     print(prefix_name('Volodymyr', debug=True))

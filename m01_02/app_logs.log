@@ -1,2 +1,7 @@
 2022-07-08 20:07:59,198 [WARNING] - __main__ - foo(15) - Badabum
 2022-07-08 20:10:37,538 [WARNING] - ex04 - foo(15) - Badabum
+2022-09-22 17:25:42,069 [WARNING] - ex04 - foo(15) - Badabum
+2022-09-22 17:26:00,837 [WARNING] - __main__ - foo(15) - Badabum
+2022-09-22 17:26:09,470 [WARNING] - ex04 - foo(15) - Badabum
+2022-09-22 18:28:27,492 [WARNING] - __main__ - foo(15) - Badabum
+2022-09-22 18:30:46,638 [WARNING] - ex04 - foo(15) - Badabum

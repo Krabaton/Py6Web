@@ -1,0 +1,69 @@
+body {
+  font-size: 14px;
+  color: black;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding-top: 100px;
+}
+
+.wrapper {
+  width: 960px;
+  margin: 0 auto;
+}
+
+.header {
+  min-height: 100px;
+  line-height: 100px;
+  text-align: center;
+  background-color: darkcyan;
+  color: aliceblue;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.content {
+  display: flex;
+}
+
+.sidebar {
+  width: 30%;
+  margin-right: auto;
+}
+
+.main {
+  width: 100%;
+}
+
+.users__title, .rooms__title {
+  padding: 10px 15px;
+  background-color: rgb(6, 94, 97);
+  color: aliceblue;
+}
+
+.msg {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.msg__input {
+  width: 80%;
+  padding: 10px;
+  color: darkblue;
+  font-size: 18px;
+  border: 1px solid rgb(4, 73, 66);
+}
+
+.msg__btn {
+  width: 20%;
+  background-color: darkcyan;
+  border: 1px solid rgb(4, 73, 66);
+}
+
+.chat {
+  min-height: 400px;
+  max-height: 400px;
+  overflow-y: auto;
+  background-color: cornflowerblue;
+  font-size: 16px;
+  color: aliceblue;
+  padding: 10px;
+}
