@@ -1,0 +1,37 @@
+{% extends "noteapp/base.html" %}
+
+{% block content %}
+
+<div>
+    <h2>Sign Up</h2>
+</div>
+
+{% if error %}
+<div>
+    <mark>{{ error }}</mark>
+</div>
+{% endif %}
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" required="" id="id_username">
+        <cite class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</cite>
+    </div>
+    <br>
+    <div>
+        <label for="id_password1">Password:</label>
+        <input type="password" name="password1" autocomplete="new-password" required="" id="id_password1">
+    </div>
+    <div>
+        <label for="id_password2">Password confirmation:</label>
+        <input type="password" name="password2" autocomplete="new-password" required="" id="id_password2">
+    </div>
+    <div class="grid">
+        <button type="submit">Submit</button>
+        <button type="reset" class="secondary">Reset</button>
+    </div>
+</form>
+
+
+{% endblock %}

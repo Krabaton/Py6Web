@@ -1,0 +1,23 @@
+{% extends "noteapp/base.html" %}
+
+{% block content %}
+
+<form action="" method="post">
+    <div>
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" autofocus="" autocapitalize="none" autocomplete="username" maxlength="150"
+               required="" id="id_username">
+    </div>
+
+    <div>
+        <label for="id_password">Password:</label>
+        <input type="password" name="password" autocomplete="current-password" required="" id="id_password">
+    </div>
+
+    <div class="grid">
+        <button type="submit">Submit</button>
+        <button type="reset" class="secondary">Reset</button>
+    </div>
+</form>
+
+{% endblock %}

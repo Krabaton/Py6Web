@@ -1,0 +1,24 @@
+{% extends "noteapp/base.html" %}
+
+{% block content %}
+
+      {% if error %}
+      <div>
+        <mark>{{ error }}</mark>
+      </div>
+      {% endif %}
+      <form method="POST" action="{% url 'usertag' %}">
+        {% csrf_token %}
+        <div style="padding: 10px">
+          <label
+            >Enter the tag name:
+            <input type="text" name="name" required />
+          </label>
+        </div>
+        <div class="grid">
+          <button type="submit">Submit</button>
+          <button type="reset" class="secondary">Reset</button>
+        </div>
+      </form>
+
+{% endblock %}

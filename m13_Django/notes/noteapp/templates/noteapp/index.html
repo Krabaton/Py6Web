@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Organizer</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"
+    />
+  </head>
+  <body>
+    <main class="container">
+      <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        <ul>
+          <li><a href="{% url 'note' %}" role="button">Add note</a></li>
+          <li><a href="{% url 'usertag' %}" role="button">Add Tag</a></li>
+        </ul>
+        <ul>
+          <li><a href="{% url 'signupuser' %}" role="button">Sign Up</a></li>
+          <li><a href="{% url 'loginuser' %}" role="button">Login</a></li>
+        </ul>
+      </nav>
+
+      {% for note in notes%}
+      <ul>
+        <li>
+          {%if not note.done%}
+          <a href="{% url 'detail' note.id %}" role="button" class="outline"
+            >{{note.name}}</a
+          >
+          <a href="{% url 'set_done' note.id %}" role="button">Mark Done</a>
+          <a href="{% url 'delete_note' note.id %}" role="button" class="contrast"
+            >Delete note</a
+          >
+          {% else %}
+
+          <a href="{% url 'detail' note.id %}" role="button" class="secondary"
+            ><s>{{note.name}}</s></a
+          >
+          {% endif %}
+        </li>
+      </ul>
+      {% endfor %}
+    </main>
+  </body>
+</html>

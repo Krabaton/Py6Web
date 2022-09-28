@@ -1,0 +1,39 @@
+{% extends "noteapp/base.html" %}
+
+{% block content %}
+
+    {% if error %}
+    <div>
+        <mark>{{ error }}</mark>
+    </div>
+    {% endif %}
+    <form method="POST" action="{% url 'note' %}">
+        {% csrf_token %}
+        <div style="padding: 10px">
+            <label
+            >Note name:
+                <input type="text" name="name" required/>
+            </label>
+        </div>
+        <div style="padding: 10px">
+            <label
+            >Note description:
+                <input type="text" name="description" required/>
+            </label>
+        </div>
+        <div style="padding: 10px">
+            <label
+            >Select tags:
+                <select name="tags" multiple="multiple" required>
+                    {% for tag in tags %}
+                    <option value="{{tag.name}}">{{tag.name}}</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </div>
+        <div class="grid">
+            <button type="submit">Submit</button>
+            <button type="reset" class="secondary">Reset</button>
+        </div>
+    </form>
+{% endblock %}
