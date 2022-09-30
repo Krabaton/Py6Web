@@ -11,14 +11,21 @@
   <body>
     <main class="container">
       <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        {% if user.is_authenticated %}
         <ul>
           <li><a href="{% url 'note' %}" role="button">Add note</a></li>
           <li><a href="{% url 'usertag' %}" role="button">Add Tag</a></li>
         </ul>
         <ul>
+          <li>Welcome <b>{{ user.username }}!</b></li>
+          <li><a href="{% url 'logoutuser' %}" role="button">Logout</a></li>
+        </ul>
+        {% else %}
+        <ul>
           <li><a href="{% url 'signupuser' %}" role="button">Sign Up</a></li>
           <li><a href="{% url 'loginuser' %}" role="button">Login</a></li>
         </ul>
+        {% endif %}
       </nav>
 
       {% for note in notes%}
