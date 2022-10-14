@@ -1,0 +1,32 @@
+{% extends "infoboard/base.html" %}
+
+{% block content%}
+
+<div class="container">
+    <p class="d-flex flex-column align-items-center justify-content-center bg-secondary" style="height: 55px">
+        Welcome to our dashboard
+    </p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Назва</th>
+            <th scope="col">Опис</th>
+            <th scope="col">Кількість</th>
+            <th scope="col">Дата</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for result in results %}
+        <tr>
+            <td><a href="chart/{{result.id}}">{{result.name}}</a></td>
+            <td>{{result.description}}</td>
+            <td>{{result.total}}</td>
+            <td>{{result.updated_at|date:'Y-m-d H:i'}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="losses/actual" class="btn btn-success">Взяти актуальні дані</a>
+</div>
+
+{% endblock %}

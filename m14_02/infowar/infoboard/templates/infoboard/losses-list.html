@@ -1,0 +1,34 @@
+{% extends "infoboard/base.html" %}
+{% block content %}
+
+<div class="container">
+    <p class="d-flex flex-column align-items-center justify-content-center bg-secondary" style="height: 55px">
+        Welcome to our dashboard
+    </p>
+    <a href="../sync" class="btn btn-success mb-3">Синхронізувати дані</a>
+    {% for dt, ls in results %}
+    <h5>
+        Дата:
+        <time>{{dt}}</time>
+    </h5>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Назва</th>
+            <th scope="col">Кількість</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for k, v in ls %}
+        <tr>
+            <td>{{k}}</td>
+            <td>{{v}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+</div>
+
+{% endblock %}

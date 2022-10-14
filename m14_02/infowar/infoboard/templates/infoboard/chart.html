@@ -1,0 +1,17 @@
+{% extends "infoboard/base.html" %}
+{% block content %}
+
+<div class="container">
+    <p class="d-flex flex-column align-items-center justify-content-center bg-secondary" style="height: 55px">
+        Welcome to chart {{namelose}}
+    </p>
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+{% load static %}
+<script src="{% static 'mychart.js' %}"></script>
+{% endblock %}
