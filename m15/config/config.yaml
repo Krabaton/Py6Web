@@ -1,0 +1,2 @@
+postgres:
+  url: postgresql+psycopg2://eboasiji:f_O4FJajPkpOiwKc7treyz_t0ILWCVJH@lucky.db.elephantsql.com/eboasiji
