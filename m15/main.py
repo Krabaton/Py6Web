@@ -1,21 +1,14 @@
-import time
-
 from fastapi import FastAPI, Request
 
-from src.router import notes
+from src.middlewares.process_time import ProcessTimeMiddleware
+from src.router import notes, users, auth
 
 app = FastAPI()
 
-
-@app.middleware("http")
-async def add_process_time_header(request: Request, call_next):
-    start_time = time.time()
-    response = await call_next(request)
-    process_time = time.time() - start_time
-    response.headers["X-Process-Time"] = str(process_time)
-    return response
-
+app.add_middleware(ProcessTimeMiddleware)
+app.include_router(auth.router)
 app.include_router(notes.router)
+app.include_router(users.router)
 
 
 @app.get("/")

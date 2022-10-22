@@ -1,2 +1,6 @@
 postgres:
   url: postgresql+psycopg2://eboasiji:f_O4FJajPkpOiwKc7treyz_t0ILWCVJH@lucky.db.elephantsql.com/eboasiji
+auth:
+  secret_key: c0dc466ba0a1001e997470f266ecc4e1084af414125d72fd245769327b4bc052
+  algorithm: HS256
+  expire_token: 30
