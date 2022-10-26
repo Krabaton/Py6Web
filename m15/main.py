@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.templating import Jinja2Templates
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
+from fastapi.middleware.cors import CORSMiddleware
 
 from src.middlewares.process_time import ProcessTimeMiddleware
 from src.router import notes, users, auth
@@ -21,6 +22,18 @@ async def check_ip(request: Request, call_next):
     response = await call_next(request)
     return response
 
+origins = [
+    "http://127.0.0.1:5500",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 app.add_middleware(ProcessTimeMiddleware)
 
 templates = Jinja2Templates(directory="templates")
@@ -39,3 +52,8 @@ def read_root(request: Request):
 @app.get("/user-notes", response_class=HTMLResponse)
 def read_root(request: Request):
     return templates.TemplateResponse('list-notes.html', {"request": request, "title": "Todo APP"})
+
+
+@app.get("/test")
+async def root():
+    return {"message": "Hello World"}
