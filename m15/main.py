@@ -10,7 +10,7 @@ from src.config import BASE_DIR
 
 app = FastAPI()
 
-black_list = ['127.0.0.1', '192.168.23.43']
+black_list = []
 
 
 @app.middleware('http')
@@ -23,7 +23,7 @@ async def check_ip(request: Request, call_next):
     return response
 
 origins = [
-    "http://127.0.0.1:5500",
+    "*",
 ]
 
 app.add_middleware(
