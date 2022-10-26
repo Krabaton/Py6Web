@@ -9,7 +9,7 @@ class ProcessTimeMiddleware(BaseHTTPMiddleware):
         super().__init__(app)
 
     async def dispatch(self, request: Request, call_next):
-        print(request.headers['Authorization'])
+        # print(request.headers.get('Authorization', None))
         start_time = time.time()
         response = await call_next(request)
         process_time = time.time() - start_time

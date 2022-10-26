@@ -21,10 +21,11 @@ async def get_users():
 if __name__ == '__main__':
     start = time()
     # loop = asyncio.get_event_loop()
-    loop = asyncio.new_event_loop()
-    asyncio.set_event_loop(loop)
-    r = loop.run_until_complete(get_users())
+    # loop = asyncio.new_event_loop()
+    # asyncio.set_event_loop(loop)
+    # r = loop.run_until_complete(get_users())
+    r = asyncio.run(get_users())
     print(r)
     print(time() - start)
-    loop.close()
+    # loop.close()
 

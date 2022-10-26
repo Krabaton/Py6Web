@@ -1,11 +1,18 @@
 from typing import List
 
-from fastapi import APIRouter, HTTPException, status, Depends, Query, Path
+from fastapi import APIRouter, HTTPException, status, Depends, Query, Path, UploadFile, File
 from sqlalchemy.orm import Session
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+import json
 
 from db.connect import get_db
+from src.libs.oauth2 import get_current_user
+from src.models import User
 from src.repository import users
 from src.schemas.users import UserModel, UserResponse
+from src.config import config as app_config
 
 router = APIRouter(prefix="/users", tags=["users"])
 
@@ -30,6 +37,24 @@ async def create_user(user: UserModel, db: Session = Depends(get_db)):
     user = await users.create_user(db, user)
     return user
 
+
+@router.patch("/avatar", response_model=UserResponse)  #
+async def upload_avatar_user(
+        file: UploadFile = File(description="A file read as UploadFile"),
+        current_user: User = Depends(get_current_user), db: Session = Depends(get_db)
+):
+    config = cloudinary.config(
+        cloud_name=app_config["cloudinary"]["cloud_name"],
+        api_key=app_config["cloudinary"]["api_key"],
+        api_secret=app_config["cloudinary"]["api_secret"],
+        secure=True
+    )
+    cloudinary.uploader.upload(file.file, public_id=f"TODOApp/{current_user.username}", unique_filename=False,
+                               overwrite=True)
+    srcURL = cloudinary.CloudinaryImage(f"TODOApp/{current_user.username}").build_url(width=250, height=250,
+                                                                                      crop='fill')
+    user = await users.update_avatar_user(db, current_user.id, srcURL)
+    return user
 
 # @router.put("/{user_id}", response_model=UserResponse)
 # async def update_user(user_id: int, user: UserModel, db: Session = Depends(get_db)):

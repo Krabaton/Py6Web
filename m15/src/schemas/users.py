@@ -11,6 +11,7 @@ class UserResponse(BaseModel):
     id: int
     username: str
     email: str
+    avatar: str
 
     class Config:
         orm_mode = True

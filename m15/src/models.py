@@ -21,3 +21,4 @@ class User(Base):
     username = Column(String(150), nullable=False)
     email = Column(String(150), nullable=False, unique=True)
     password = Column(String(255), nullable=False)
+    avatar = Column(String(255))
