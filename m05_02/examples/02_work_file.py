@@ -44,5 +44,6 @@ if __name__ == '__main__':
     pl_filename = 'pl_squares.txt'
     timer = time()
     with Pool(3) as pool:
-        result = pool.starmap(worker, [(values[:200000], pl_filename), (values[200000:400000], pl_filename), (values[400000:], pl_filename)])
+        result = pool.starmap(worker, [(values[:200000], pl_filename), (values[200000:400000], pl_filename),
+                                       (values[400000:], pl_filename)])
     print(f'Done by 3 pool processes dummy: {round(time() - timer, 4)}')

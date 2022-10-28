@@ -31,16 +31,19 @@ def read_folder(path: Path) -> list:
 
 
 def copy_file(dir: Path) -> None:
+    print(f'Start: {current_process().name} in {dir}')
     for el in dir.iterdir():
         if el.is_file():
             ext = el.suffix
             new_path = output_folder / ext
             new_path.mkdir(exist_ok=True, parents=True)
             copyfile(el, new_path / el.name)
+    print(f'Finish: {current_process().name} in {dir}')
 
 
 if __name__ == '__main__':
     with Pool(cpu_count()) as pool:
+        print(read_folder(Path(source)))
         pool.map(copy_file, read_folder(Path(source)))
         pool.close()
         pool.join()
