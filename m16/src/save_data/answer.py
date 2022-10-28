@@ -31,6 +31,5 @@ applicant = [
     },
 ]
 
-
 if __name__ == '__main__':
     save_applicant_data(applicant, 'data.csv')
